@@ -4,11 +4,11 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="header.jsp"/>
-
+<c:url var="imagesUrl" value="resources/images"/>
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>14</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -59,9 +59,9 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="images/signature.svg" class="about-us--text-signature" alt="Signature"/>
+        <img src="${imagesUrl}signature.svg" class="about-us--text-signature" alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="resources/images/about-us.jpg"/>" alt="People in circle"/>
+    <div class="about-us--image"><img src="${imagesUrl}about-us.jpg" alt="People in circle"/>
     </div>
 </section>
 
