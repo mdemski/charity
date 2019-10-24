@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Donation extends AbstractEntity {
 
     private int quantity;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "donation")
+    @ManyToMany
     private List<Category> categories;
     @ManyToOne
     private Institution institution;
