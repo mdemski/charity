@@ -74,34 +74,18 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-<%--            <c:forEach items="${institutions}" begin="1" step="2" var="institution">--%>
-            <c:forEach items="${institutions}" var="institution" varStatus="loopCounter">
-                <c:if test="${loopCounter.count%2 != 0}">
+            <c:forEach items="${institutions}" begin="0" step="2"  varStatus="count">
                 <li>
                     <div class="col">
-                        <div class="title">${institution.name}</div>
-                        <div class="subtitle">${institution.description}</div>
+                        <div class="title">${institutions.get(count).name}</div>
+                        <div class="subtitle">${institutions.get(count).description}</div>
                     </div>
 
                     <div class="col">
-                        <div class="title">${institution.name}</div>
-                        <div class="subtitle">${institution.description}</div>
+                        <div class="title">${institutions.get(count+1).name}</div>
+                        <div class="subtitle">${institutions.get(count+1).description}</div>
                     </div>
                 </li>
-                </c:if>
-                <c:if test="${loopCounter.count%2 == 0}">
-                <li>
-                    <div class="col">
-                        <div class="title">${institution.name}</div>
-                        <div class="subtitle">${institution.description}</div>
-                    </div>
-                    <div class="col">
-                        <div class="title">${institution.name}</div>
-                        <div class="subtitle">${institution.description}</div>
-                    </div>
-
-                </li>
-                </c:if>
             </c:forEach>
 
         </ul>
