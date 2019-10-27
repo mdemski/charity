@@ -13,7 +13,7 @@
         <form:checkboxes path="categories"
                          items="${categories}"/>
         <form:label path="institution">Dla instytucji:</form:label>
-        <form:select path="institution" items="${institutions}"/>
+        <form:select path="institution.id" items="${institutions}" itemLabel="name" itemValue="id"/>
         <form:label path="zipCode">Kod pocztowy</form:label>
         <form:input path="zipCode"/>
         <form:label path="street">Ulica</form:label>
