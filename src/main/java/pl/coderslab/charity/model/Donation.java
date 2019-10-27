@@ -1,6 +1,9 @@
 package pl.coderslab.charity.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -17,11 +20,12 @@ public class Donation extends AbstractEntity {
     private String street;
     private String city;
     private String zipCode;
-    private LocalDateTime pickUpDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate pickUpDate;
     private LocalDateTime pickUpTime;
     private String pickUpComment;
 
-    public Donation(int quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDateTime pickUpDate, LocalDateTime pickUpTime, String pickUpComment) {
+    public Donation(int quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalDateTime pickUpTime, String pickUpComment) {
         this.quantity = quantity;
         this.categories = categories;
         this.institution = institution;
@@ -84,11 +88,11 @@ public class Donation extends AbstractEntity {
         this.zipCode = zipCode;
     }
 
-    public LocalDateTime getPickUpDate() {
+    public LocalDate getPickUpDate() {
         return pickUpDate;
     }
 
-    public void setPickUpDate(LocalDateTime pickUpDate) {
+    public void setPickUpDate(LocalDate pickUpDate) {
         this.pickUpDate = pickUpDate;
     }
 
