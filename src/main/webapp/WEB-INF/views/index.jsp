@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="header.jsp"/>
-<c:url var="imagesUrl" value="resources/images"/>
+<c:url var="imagesUrl" value="resources/images/"/>
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
@@ -74,16 +74,16 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${institutions}" begin="0" step="2"  varStatus="count">
+            <c:forEach items="${institutions}" begin="0" step="2" varStatus="loop">
                 <li>
                     <div class="col">
-                        <div class="title">${institutions.get(count).name}</div>
-                        <div class="subtitle">${institutions.get(count).description}</div>
+                        <div class="title">${institutions[loop.index].name}</div>
+                        <div class="subtitle">${institutions[loop.index].description}</div>
                     </div>
 
                     <div class="col">
-                        <div class="title">${institutions.get(count+1).name}</div>
-                        <div class="subtitle">${institutions.get(count+1).description}</div>
+                        <div class="title">${institutions[loop.index + 1].name}</div>
+                        <div class="subtitle">${institutions[loop.index + 1].description}</div>
                     </div>
                 </li>
             </c:forEach>
