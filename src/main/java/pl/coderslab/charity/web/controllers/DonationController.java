@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.repositories.CategoryRepository;
 import pl.coderslab.charity.repositories.InstitutionRepository;
 
 @Controller
-@RequestMapping("/datek")
+
 public class DonationController {
 
     private CategoryRepository categoryRepository;
@@ -19,8 +20,9 @@ public class DonationController {
         this.institutionRepository = institutionRepository;
     }
 
-    @GetMapping
+    @RequestMapping("/datek")
     public String prepareDonationFormPage(Model model){
+        model.addAttribute("donation", new Donation());
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("institutions", institutionRepository.findAll());
         return "donationForm";
