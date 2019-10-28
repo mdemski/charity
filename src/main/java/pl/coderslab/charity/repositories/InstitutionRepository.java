@@ -8,6 +8,6 @@ import pl.coderslab.charity.model.Institution;
 import java.util.List;
 
 public interface InstitutionRepository<T extends AbstractEntity, L extends Number> extends JpaRepository<Institution, Long> {
-    @Query("SELECT DISTINCT i FROM institutions")
+    @Query("SELECT DISTINCT i FROM Institution i")
     List<Institution> getAllSupportedInstitutions();
 }
