@@ -1060,6 +1060,15 @@ header {
   position: relative;
 }
 
+.bad-data{
+  font-family: 'Merriweather', serif;
+  color: red;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
 /* line 4, scss/modules/_navigation.scss */
 header nav {
   display: -webkit-box;
