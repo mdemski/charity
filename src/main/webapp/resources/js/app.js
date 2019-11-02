@@ -149,6 +149,73 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     updateForm() {
       this.$step.innerText = this.currentStep;
+        var spanBadChoice = document.createElement('span');
+        spanBadChoice.className = 'bad-data';
+      var categories = [];
+          $("input:checkbox[name=categories]:checked").each(function(){
+            categories.push($(this).val());
+      });
+
+      if (this.currentStep === 2) {
+        if (categories.length === 0){
+            var stepOne = $("[data-step='1']")[1];
+            spanBadChoice.innerText = 'Nie wybrałeś żadnej kategorii';
+          stepOne.append(spanBadChoice);
+          return false;
+        }
+      }
+
+      var quantity = document.querySelector('#quantity').value;
+      if (this.currentStep === 3) {
+        if (quantity <= 0){
+            var stepTwo = $("[data-step='2']")[1];
+            spanBadChoice.innerText = 'Ilość oddawanych worków musi być większa od 0';
+            stepTwo.append(spanBadChoice);
+          return false;
+        }
+        if(quantity < categories.length){
+          var stepTwo = $("[data-step='2']")[1];
+          spanBadChoice.innerText = 'Ilość oddawanych worków jest mniejsza od ilości wybranych kategorii';
+          stepTwo.append(spanBadChoice);
+          return false;
+        }
+      }
+
+      var institution = $("input:radio[name=institution]:checked").val();
+      if (this.currentStep === 4) {
+        if (institution.length === 0){
+            var stepTree = $("[data-step='3']")[1];
+            spanBadChoice.innerText = 'Komu chcesz podarować datki?';
+            stepTree.append(spanBadChoice);
+          return false;
+        }
+      }
+
+      var city = $('#city').val();
+      var street = $('#street').val();
+      var zipCode = $('#zipCode').val();
+      var pickUpDate = new Date($('#pickUpDate').val()); //30-10-2019 momentJS
+      var currentDate = new Date();
+      var pickUpTime = new Date($('#pickUpTime').val());
+      var pickUpComment = $('#pickUpComment').val();
+
+        if (this.currentStep === 5) {
+          if (city.length === 0 || street.length === 0 || zipCode.length === 0 || pickUpDate.length === 0 || pickUpTime.length === 0) {
+              var stepFour = $("[data-step='4']")[1];
+              spanBadChoice.innerText = 'Podpowiedz kurierowi jak ma odebrać datki';
+              stepFour.append(spanBadChoice);
+            return false;
+          }
+        }
+
+      if (this.currentStep === 5) {
+        if (Date.parse(currentDate) >= Date.parse(pickUpDate)) {
+          var stepFour = $("[data-step='4']")[1];
+          spanBadChoice.innerText = 'Data odbioru jest z przeszłości, podaj właściwą datę';
+          stepFour.append(spanBadChoice);
+          return false;
+        }
+      }
 
       // TODO: Validation
 
@@ -164,6 +231,7 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+
     }
 
   }
