@@ -41,6 +41,7 @@
                                     type="checkbox"
                                     name="categories"
                                     value="${category.id}"
+                                    data-category-name="${category.name}"
                             />
                             <span class="checkbox"></span>
                             <span class="description"
@@ -79,7 +80,7 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label name="institution">
-                            <input name="institution" value="${institution.id}" type="radio"/>
+                            <input name="institution" value="${institution.id}" data-institution-name="${institution.name}" type="radio"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                                 <div class="title">${institution.name}</div>
