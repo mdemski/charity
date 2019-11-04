@@ -5,12 +5,15 @@ import pl.coderslab.charity.model.Category;
 
 import org.springframework.core.convert.converter.Converter;
 import pl.coderslab.charity.repositories.CategoryRepository;
+
+import java.util.Optional;
+
 @Component
-public class CategoryConverter implements Converter<String, Category> {
+public class CategoryConverter implements Converter<Long, Optional<Category>> {
 
-    private CategoryRepository categoryRepository;
+    private CategoryRepository<pl.coderslab.charity.model.AbstractEntity, Number> categoryRepository;
 
-    public CategoryConverter(CategoryRepository categoryRepository) {
+    public CategoryConverter(CategoryRepository<pl.coderslab.charity.model.AbstractEntity, Number> categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
@@ -18,7 +21,7 @@ public class CategoryConverter implements Converter<String, Category> {
     }
 
     @Override
-    public Category convert(String s) {
-        return (Category) categoryRepository.findById(Long.parseLong(s)).get();
+    public Optional<Category> convert(Long s) {
+        return categoryRepository.findById(s);
     }
 }
