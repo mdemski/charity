@@ -2,25 +2,26 @@ package pl.coderslab.charity.converters;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.repositories.CategoryRepository;
 import pl.coderslab.charity.repositories.InstitutionRepository;
 
+import java.util.Optional;
+
 @Component
-public class InstitutionConverter implements Converter<String, Institution> {
+public class InstitutionConverter implements Converter<Long, Optional<Institution>> {
 
-    private InstitutionRepository institutionRepository;
+    private InstitutionRepository<pl.coderslab.charity.model.AbstractEntity, Number> institutionRepository;
 
-    public InstitutionConverter(InstitutionRepository institutionRepository) {
+    public InstitutionConverter(InstitutionRepository<pl.coderslab.charity.model.AbstractEntity, Number> institutionRepository) {
         this.institutionRepository = institutionRepository;
     }
 
     public InstitutionConverter() {
     }
 
+
     @Override
-    public Institution convert(String s) {
-        return (Institution) institutionRepository.findById(Long.parseLong(s)).get();
+    public Optional<Institution> convert(Long aLong) {
+        return institutionRepository.findById(aLong);
     }
 }
