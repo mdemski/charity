@@ -6,6 +6,6 @@ import pl.coderslab.charity.model.AbstractEntity;
 import pl.coderslab.charity.model.Donation;
 
 public interface DonationRepository<T extends AbstractEntity, L extends Number> extends JpaRepository<Donation, Long> {
-    @Query(value = "SELECT quantity SUM FROM donations", nativeQuery = true)
+    @Query(value = "SELECT SUM(quantity) FROM donations", nativeQuery = true)
     int sumAllBags();
 }
