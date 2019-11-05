@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
         spanBadChoice.className = 'bad-data';
       var categories = [];
           $("input:checkbox[name=categories]:checked").each(function(){
-            categories.push($(this).val());
+            categories.push($(this));
       });
 
       if (this.currentStep === 2) {
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
 
-      var institution = $("input:radio[name=institution]:checked").val();
+      var institution = $("input:radio[name=institution]:checked");
       if (this.currentStep === 4) {
         if (institution.length === 0){
             var stepTree = $("[data-step='3']")[1];
@@ -194,9 +194,9 @@ document.addEventListener("DOMContentLoaded", function() {
       var city = $('#city').val();
       var street = $('#street').val();
       var zipCode = $('#zipCode').val();
-      var pickUpDate = new Date($('#pickUpDate').val()); //30-10-2019 momentJS
-      var currentDate = new Date();
-      var pickUpTime = new Date($('#pickUpTime').val());
+      var pickUpDate = $('#pickUpDate').val(); //30-10-2019 momentJS
+      var currentDate = Date.now();
+      var pickUpTime = $('#pickUpTime').val();
       var pickUpComment = $('#pickUpComment').val();
 
         if (this.currentStep === 5) {
@@ -209,15 +209,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
       if (this.currentStep === 5) {
-        if (Date.parse(currentDate) >= Date.parse(pickUpDate)) {
+        if (currentDate >= Date.parse(pickUpDate)) {
           var stepFour = $("[data-step='4']")[1];
           spanBadChoice.innerText = 'Data odbioru jest z przeszłości, podaj właściwą datę';
           stepFour.append(spanBadChoice);
           return false;
         }
       }
-
-      // TODO: Validation
 
       this.slides.forEach(slide => {
         slide.classList.remove("active");
@@ -230,7 +228,26 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
-      // TODO: get data from inputs and show them in summary
+      var stepFive = $("[data-step='5']")[0];
+      var spans = stepFive.querySelectorAll('.summary--text');
+      var checkedCategories = [];
+      for(var i = 0; i < categories.length; i++){
+        checkedCategories += categories[i].data('category-name') + ', ';
+      }
+
+      spans[0].innerText = quantity + ' worki ' + checkedCategories;
+      spans[1].innerText = 'Dla fundacji: ' + institution.data('institution-name');
+
+      var addressList = stepFive.querySelectorAll('.form-section--column');
+      var addressData = addressList[0].querySelectorAll('li');
+      addressData[0].innerText = 'Ulica: ' + street;
+      addressData[1].innerText = 'Miasto: ' + city;
+      addressData[2].innerText = 'Kod pocztowy: ' + zipCode;
+
+      var pickUpData = addressList[1].querySelectorAll('li');
+      pickUpData[0].innerText = 'Data: ' + pickUpDate;
+      pickUpData[1].innerText = 'Godzina: ' + pickUpTime;
+      pickUpData[2].innerText = 'Uwagi: ' + pickUpComment;
 
     }
 
