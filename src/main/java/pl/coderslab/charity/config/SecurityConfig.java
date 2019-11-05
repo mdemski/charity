@@ -39,12 +39,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
+                .loginPage("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/datek").permitAll()
+                .antMatchers("/potwierdzenie").permitAll()
                 .antMatchers("/rejestracja").permitAll()
                 .anyRequest().authenticated();
     }
