@@ -38,10 +38,10 @@
                     <div class="form-group form-group--checkbox">
                         <label>
                             <input
-                                    type="checkbox"
                                     name="categories"
                                     value="${category.id}"
                                     data-category-name="${category.name}"
+                                    type="checkbox"
                             />
                             <span class="checkbox"></span>
                             <span class="description"
