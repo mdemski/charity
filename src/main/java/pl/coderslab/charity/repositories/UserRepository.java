@@ -8,5 +8,5 @@ public interface UserRepository <T extends AbstractEntity, L extends Number> ext
 
     User save (User user);
 
-    User findByEmail(String email);
+    User getUserByEmail(String email);
 }
