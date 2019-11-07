@@ -32,6 +32,11 @@ public class User extends AbstractEntity {
         this.role = role;
     }
 
+    public User(@Email @NotBlank String email, @Size(min = 8, message = "Hasło musi mieć co najmniej 8 znaków") @NotBlank String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public User() {
     }
 
