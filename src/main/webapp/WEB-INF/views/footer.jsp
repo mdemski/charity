@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <footer>
     <div class="contact">
@@ -25,7 +25,12 @@
         </div>
     </div>
 </footer>
+<script src="<c:url value="resources/js/app.js"/>" type="application/json"></script>
+<script src="<c:url value="resources/js/jquery.min.js"/>" type="application/json"></script>
+<script src="<c:url value="resources/js/bootstrap.bundle.min.js"/>" type="application/json"></script>
+<script src="<c:url value="resources/js/jquery.easing.min.js"/>" type="application/json"></script>
+<script src="<c:url value="resources/js/sb-admin-2.min.js"/>" type="application/json"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="<c:url value="resources/js/app.js"/>"></script>
+
 </body>
 </html>
