@@ -12,7 +12,6 @@ import pl.coderslab.charity.repositories.DonationRepository;
 import pl.coderslab.charity.repositories.InstitutionRepository;
 import pl.coderslab.charity.repositories.UserRepository;
 
-import javax.validation.Valid;
 import java.util.List;
 
 
@@ -39,26 +38,24 @@ public class HomeController {
     }
 
     @GetMapping("/login")
-    public String prepareLoginPage(Model model){
+    public String prepareLoginPage(Model model) {
         model.addAttribute("user", new User());
         return "login";
     }
-
-    @PostMapping("/login")
-    public String processLoginUser(@Valid User user, BindingResult result){
-        if (!(result.hasErrors())){
-            User logInUser = userRepository.findByEmail(user.getEmail());
-            if(logInUser != null){
-                if(logInUser.getPassword().equals(user.getPassword())){
-                    return "index";
-                } else {
-                    return "login";
-                }
-            } else {
-                return "login";
-            }
-        } else {
-            return "login";
-        }
-    }
+//
+//    @PostMapping("/login")
+//    public String processLoginUser(@Valid User user, BindingResult result) {
+//        User logInUser = userRepository.getUserByEmail(user.getEmail());
+//        if (logInUser != null) {
+//            if (logInUser.getPassword().equals(user.getPassword())) {
+//                return "redirect:/moje-konto/" + logInUser.getId();
+//            } else {
+//                result.rejectValue("password", "Podałeś błędne hasło");
+//                return "login";
+//            }
+//        } else {
+//            result.rejectValue("email", "Brak podanego użytkownika w bazie danych");
+//            return "login";
+//        }
+//    }
 }
