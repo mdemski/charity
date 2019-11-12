@@ -30,7 +30,7 @@ public class DonationController {
         model.addAttribute("donation", new Donation());
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("institutions", institutionRepository.findAll());
-        return "donationForm";
+        return "donation-form";
     }
 
     @PostMapping
