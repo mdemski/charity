@@ -10,7 +10,7 @@ import pl.coderslab.charity.repositories.InstitutionRepository;
 @RequestMapping("/instytucje")
 public class InstitutionController {
 
-    private InstitutionRepository institutionRepository;
+    private final InstitutionRepository institutionRepository;
 
     public InstitutionController(InstitutionRepository institutionRepository) {
         this.institutionRepository = institutionRepository;

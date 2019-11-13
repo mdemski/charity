@@ -14,8 +14,8 @@ import javax.validation.Valid;
 @RequestMapping("/rejestracja")
 public class RegisterController {
 
-    private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public RegisterController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;

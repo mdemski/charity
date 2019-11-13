@@ -15,9 +15,9 @@ import pl.coderslab.charity.repositories.InstitutionRepository;
 @RequestMapping("/datek")
 public class DonationController {
 
-    private CategoryRepository categoryRepository;
-    private InstitutionRepository institutionRepository;
-    private DonationRepository donationRepository;
+    private final CategoryRepository categoryRepository;
+    private final InstitutionRepository institutionRepository;
+    private final DonationRepository donationRepository;
 
     public DonationController(CategoryRepository categoryRepository, InstitutionRepository institutionRepository, DonationRepository donationRepository) {
         this.categoryRepository = categoryRepository;

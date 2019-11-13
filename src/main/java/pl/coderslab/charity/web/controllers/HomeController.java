@@ -18,9 +18,9 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private InstitutionRepository institutionRepository;
-    private DonationRepository donationRepository;
-    private UserRepository userRepository;
+    private final InstitutionRepository institutionRepository;
+    private final DonationRepository donationRepository;
+    private final UserRepository userRepository;
 
     public HomeController(InstitutionRepository institutionRepository, DonationRepository donationRepository, UserRepository userRepository) {
         this.institutionRepository = institutionRepository;

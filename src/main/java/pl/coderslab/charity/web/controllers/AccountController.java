@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 @Controller
 public class AccountController {
 
-    private UserRepository userRepository;
-    private InstitutionRepository institutionRepository;
-    private DonationRepository donationRepository;
+    private final UserRepository userRepository;
+    private final InstitutionRepository institutionRepository;
+    private final DonationRepository donationRepository;
 
     public AccountController(UserRepository userRepository, InstitutionRepository institutionRepository, DonationRepository donationRepository) {
         this.userRepository = userRepository;
