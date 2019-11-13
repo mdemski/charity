@@ -27,9 +27,9 @@ import java.io.IOException;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private DataSource dataSource;
-    private IAuthenticationFacade authenticationFacade;
-    private UserRepository userRepository;
+    private final DataSource dataSource;
+    private final IAuthenticationFacade authenticationFacade;
+    private final UserRepository userRepository;
 
     public SecurityConfig(DataSource dataSource, IAuthenticationFacade authenticationFacade, UserRepository userRepository) {
         this.dataSource = dataSource;
