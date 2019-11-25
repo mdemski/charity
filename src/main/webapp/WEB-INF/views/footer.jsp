@@ -25,7 +25,7 @@
         </div>
     </div>
 </footer>
-<script src="<c:url value="resources/js/app.js"/>" type="application/json"></script>
+<script src="<c:url value="resources/js/app.js"/>"></script>
 <script src="<c:url value="resources/js/jquery.min.js"/>" type="application/json"></script>
 <script src="<c:url value="resources/js/bootstrap.bundle.min.js"/>" type="application/json"></script>
 <script src="<c:url value="resources/js/jquery.easing.min.js"/>" type="application/json"></script>
