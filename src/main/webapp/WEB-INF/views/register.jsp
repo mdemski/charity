@@ -28,7 +28,7 @@
             <form:input path="lastName" placeholder="Nazwisko" />
         </div>
         <div class="form-group">
-            <form:hidden path="role" value="Normal user" />
+            <form:hidden path="role" value="user" />
         </div>
 
         <div class="form-group form-group--buttons">
